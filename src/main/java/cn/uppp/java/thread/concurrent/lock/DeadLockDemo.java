@@ -1,11 +1,11 @@
-package cn.uppp.java.thread.lock.dead;
+package cn.uppp.java.thread.concurrent.lock;
 
 import java.util.concurrent.TimeUnit;
 
 /**
  * 死锁
  */
-public class Main {
+public class DeadLockDemo {
     public static void main(String[] args) {
         final String java = "java";
         final String python = "python";

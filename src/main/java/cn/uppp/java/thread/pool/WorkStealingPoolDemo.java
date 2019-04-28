@@ -1,6 +1,5 @@
 package cn.uppp.java.thread.pool;
 
-import cn.uppp.java.utils.TestUtils;
 import cn.uppp.java.utils.ThreadUtils;
 
 import java.util.concurrent.ExecutorService;
@@ -8,20 +7,24 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 单线程执行器
- * 特点：该线程池中只有一个线程，在该线程运行时，其他任务会放到LinkedBlockingQueue阻塞队列中，保证执行顺序
+ * 工作窃取线程池
  */
-public class SingleThreadExecutorDemo {
+public class WorkStealingPoolDemo {
     /**
-     * 预期：一个一个输出，间隔一秒
+     * 预期：
      * @param args
+     * @throws InterruptedException
      */
-    public static void main(String[] args) {
-        ExecutorService executor = Executors.newSingleThreadExecutor();
+    public static void main(String[] args) throws InterruptedException {
+        ExecutorService executor = Executors.newWorkStealingPool(2);
         executor.submit(new InternalThread());
         executor.submit(new InternalThread());
         executor.submit(new InternalThread());
         executor.shutdown();
+        // 必须阻塞，否则看不到结果
+        while(true){
+            TimeUnit.HOURS.sleep(1);
+        }
     }
 
     private static class InternalThread implements Runnable {

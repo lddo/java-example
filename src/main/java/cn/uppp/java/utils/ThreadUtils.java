@@ -16,4 +16,8 @@ public class ThreadUtils {
             new Thread(runnable).start();
         }
     }
+
+    public static void outCurrentInfo(){
+        System.out.println("线程[" + Thread.currentThread().getName() + "]，执行时间为[" + TestUtils.getNowTime()+"]");
+    }
 }

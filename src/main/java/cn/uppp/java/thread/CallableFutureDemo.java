@@ -1,4 +1,4 @@
-package cn.uppp.java.thread.way;
+package cn.uppp.java.thread;
 
 import java.util.concurrent.*;
 

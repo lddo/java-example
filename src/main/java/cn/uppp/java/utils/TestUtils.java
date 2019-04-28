@@ -7,7 +7,7 @@ public class TestUtils {
      * 获取现在时间
      * @return
      */
-    public static long getStartTime() {
+    public static long getNowTime() {
         return System.currentTimeMillis();
     }
 

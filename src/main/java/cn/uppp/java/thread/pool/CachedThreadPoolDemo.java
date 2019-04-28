@@ -1,6 +1,7 @@
 package cn.uppp.java.thread.pool;
 
 import cn.uppp.java.utils.TestUtils;
+import cn.uppp.java.utils.ThreadUtils;
 
 import java.util.concurrent.*;
 
@@ -12,33 +13,26 @@ import java.util.concurrent.*;
  * keepalive 保持时间，在线程空闲时间超过改时间后，进行回收
  */
 public class CachedThreadPoolDemo {
-    public static void main(String[] args) throws ExecutionException, InterruptedException {
-        long startTime = TestUtils.getStartTime();
-        // 创建可缓存线程池对象
+    /**
+     * 预期：同时输出
+     * @param args
+     */
+    public static void main(String[] args) {
         ExecutorService executor= Executors.newCachedThreadPool();
-        // 将计算任务加入线程池
-        Future<Integer> subSum = executor.submit(new InternalCallable());
-        Future<Integer> subSum2 = executor.submit(new InternalCallable());
-        Future<Integer> subSum3 = executor.submit(new InternalCallable());
-        Future<Integer> subSum4 = executor.submit(new InternalCallable());
-        Future<Integer> subSum5 = executor.submit(new InternalCallable());
-        // 将任务结果汇总
-        System.out.println(subSum.get() + subSum2.get() + subSum3.get() + subSum4.get() + subSum5.get());
-        // 每个任务阻塞三秒，由于同时处理，总共阻塞共三秒
-        TestUtils.outExecuteTime(startTime);
+        executor.submit(new InternalThread());
+        executor.submit(new InternalThread());
+        executor.submit(new InternalThread());
     }
 
-    private static class InternalCallable implements Callable<Integer> {
-
+    private static class InternalThread implements Runnable {
         @Override
-        public Integer call() throws Exception {
-            int sum = 0;
-            for (int i = 0; i < 1000; i++) {
-                sum += i;
+        public void run() {
+            try {
+                TimeUnit.SECONDS.sleep(1);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-            TimeUnit.SECONDS.sleep(3);
-            System.out.println("执行线程名："+Thread.currentThread().getName());
-            return sum;
+            ThreadUtils.outCurrentInfo();
         }
     }
 }

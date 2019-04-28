@@ -1,7 +1,6 @@
 package cn.uppp.java.clone;
 
 import cn.uppp.java.clone.bean.*;
-import cn.uppp.java.core.clone.bean.*;
 
 import java.io.IOException;
 
