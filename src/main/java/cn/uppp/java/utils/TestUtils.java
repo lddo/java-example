@@ -5,6 +5,7 @@ import java.util.Arrays;
 public class TestUtils {
     /**
      * 获取现在时间
+     *
      * @return
      */
     public static long getNowTime() {
@@ -13,6 +14,7 @@ public class TestUtils {
 
     /**
      * 输出执行时间
+     *
      * @param startTime
      */
     public static void outExecuteTime(long startTime) {
@@ -20,7 +22,7 @@ public class TestUtils {
         System.out.println("总耗时：" + (endTime - startTime));
     }
 
-    public static void outResult(Object[] objs){
+    public static void outResult(Object[] objs) {
         Arrays.stream(objs).forEach(System.out::println);
         System.out.println("-----------------------------------");
     }

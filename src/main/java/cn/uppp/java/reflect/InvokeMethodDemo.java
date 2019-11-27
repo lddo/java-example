@@ -19,12 +19,13 @@ public class InvokeMethodDemo {
 
     /**
      * 反射调用方法
+     *
      * @param user
      */
-    public static void invokeMethod(User user){
+    public static void invokeMethod(User user) {
         Method[] methods = GetObjectInfoDemo.getMethod(user.getClass());
         Arrays.stream(methods).forEach(method -> {
-            if(method.getName().equals("setName")) {
+            if (method.getName().equals("setName")) {
                 try {
                     method.invoke(user, "invoke_method");
                     return;

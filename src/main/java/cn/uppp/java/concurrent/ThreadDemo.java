@@ -1,10 +1,9 @@
-package cn.uppp.java.thread;
+package cn.uppp.java.concurrent;
 
 import java.util.concurrent.TimeUnit;
 
 /**
  * 继承Thread方式
- *
  */
 public class ThreadDemo {
     public static void main(String[] args) throws InterruptedException {

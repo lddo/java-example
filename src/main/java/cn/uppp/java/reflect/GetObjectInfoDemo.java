@@ -27,24 +27,26 @@ public class GetObjectInfoDemo {
 
     /**
      * 获取类的注解
+     *
      * @param clazz
      */
-    public static Annotation[] getAnnotation(Class clazz){
+    public static Annotation[] getAnnotation(Class clazz) {
         return clazz.getDeclaredAnnotations();
     }
 
     /**
      * 获取类的成员变量
      */
-    public static Field[] getMemberVariable(Class clazz){
+    public static Field[] getMemberVariable(Class clazz) {
         return clazz.getDeclaredFields();
     }
 
     /**
      * 获取方法
+     *
      * @param clazz
      */
-    public static Method[] getMethod(Class clazz){
+    public static Method[] getMethod(Class clazz) {
         return clazz.getDeclaredMethods();
     }
 }

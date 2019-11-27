@@ -1,6 +1,5 @@
-package cn.uppp.java.thread.pool;
+package cn.uppp.java.concurrent.pool;
 
-import cn.uppp.java.utils.TestUtils;
 import cn.uppp.java.utils.ThreadUtils;
 
 import java.util.concurrent.ExecutorService;
@@ -8,16 +7,18 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 单线程执行器
- * 特点：该线程池中只有一个线程，在该线程运行时，其他任务会放到LinkedBlockingQueue阻塞队列中，保证执行顺序
+ * 固定线程池
+ * 特点：在线程池创建时，指定线程数量后，不可更改
  */
-public class SingleThreadExecutorDemo {
+public class FixedThreadPoolDemo {
     /**
-     * 预期：一个一个输出，间隔一秒
+     * 初始化线程为2个，任务为三个
+     * 预期：第三个任务耗时比其他任务多1秒
+     *
      * @param args
      */
     public static void main(String[] args) {
-        ExecutorService executor = Executors.newSingleThreadExecutor();
+        ExecutorService executor = Executors.newFixedThreadPool(2);
         executor.submit(new InternalThread());
         executor.submit(new InternalThread());
         executor.submit(new InternalThread());

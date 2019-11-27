@@ -49,6 +49,7 @@ public class SortDemo {
         Arrays.stream(nums).forEach(num -> System.out.print(num + "  "));
         System.out.println();
     }
+
     // 切分
     private static int partition(int[] nums, int left, int right) {
         // 找到需要交换元素的下标

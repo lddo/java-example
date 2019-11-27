@@ -1,4 +1,4 @@
-package cn.uppp.java.thread.concurrent;
+package cn.uppp.java.concurrent.concurrent;
 
 import cn.uppp.java.utils.ThreadUtils;
 
@@ -6,6 +6,8 @@ import cn.uppp.java.utils.ThreadUtils;
  * ThreadLocal例子
  */
 public class ThreadLocalDemo {
+    ThreadLocal<Integer> amount = new ThreadLocal<>();
+
     public static void main(String[] args) {
         ThreadLocalDemo demo = new ThreadLocalDemo();
         demo.amount.set(0);
@@ -18,8 +20,6 @@ public class ThreadLocalDemo {
 
         System.out.println("计算后金额：" + demo.amount.get());
     }
-
-    ThreadLocal<Integer> amount = new ThreadLocal<>();
 
     public synchronized void plus() {
         amount.set(amount.get() + 1);

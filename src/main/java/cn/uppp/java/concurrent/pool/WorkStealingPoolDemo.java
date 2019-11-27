@@ -1,4 +1,4 @@
-package cn.uppp.java.thread.pool;
+package cn.uppp.java.concurrent.pool;
 
 import cn.uppp.java.utils.ThreadUtils;
 
@@ -12,6 +12,7 @@ import java.util.concurrent.TimeUnit;
 public class WorkStealingPoolDemo {
     /**
      * 预期：
+     *
      * @param args
      * @throws InterruptedException
      */
@@ -22,7 +23,7 @@ public class WorkStealingPoolDemo {
         executor.submit(new InternalThread());
         executor.shutdown();
         // 必须阻塞，否则看不到结果
-        while(true){
+        while (true) {
             TimeUnit.HOURS.sleep(1);
         }
     }

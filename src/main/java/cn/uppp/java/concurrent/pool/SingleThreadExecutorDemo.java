@@ -1,27 +1,27 @@
-package cn.uppp.java.thread.pool;
+package cn.uppp.java.concurrent.pool;
 
-import cn.uppp.java.utils.TestUtils;
 import cn.uppp.java.utils.ThreadUtils;
 
-import java.util.concurrent.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 /**
- * 可缓存的线程池
- * 特点：该线程池的线程是弹性的，有新任务时优先使用核心线程，在核心线程全部忙碌时，会创建新的线程
- * coreSize 核心线程数
- * maxNum 最大线程数
- * keepalive 保持时间，在线程空闲时间超过改时间后，进行回收
+ * 单线程执行器
+ * 特点：该线程池中只有一个线程，在该线程运行时，其他任务会放到LinkedBlockingQueue阻塞队列中，保证执行顺序
  */
-public class CachedThreadPoolDemo {
+public class SingleThreadExecutorDemo {
     /**
-     * 预期：同时输出
+     * 预期：一个一个输出，间隔一秒
+     *
      * @param args
      */
     public static void main(String[] args) {
-        ExecutorService executor= Executors.newCachedThreadPool();
+        ExecutorService executor = Executors.newSingleThreadExecutor();
         executor.submit(new InternalThread());
         executor.submit(new InternalThread());
         executor.submit(new InternalThread());
+        executor.shutdown();
     }
 
     private static class InternalThread implements Runnable {

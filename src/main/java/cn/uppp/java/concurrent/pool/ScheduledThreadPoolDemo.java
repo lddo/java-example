@@ -1,4 +1,4 @@
-package cn.uppp.java.thread.pool;
+package cn.uppp.java.concurrent.pool;
 
 import cn.uppp.java.utils.ThreadUtils;
 
@@ -15,6 +15,7 @@ import java.util.concurrent.TimeUnit;
 public class ScheduledThreadPoolDemo {
     /**
      * 可眼
+     *
      * @param args
      */
     public static void main(String[] args) {

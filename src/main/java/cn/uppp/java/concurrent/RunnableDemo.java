@@ -1,4 +1,4 @@
-package cn.uppp.java.thread;
+package cn.uppp.java.concurrent;
 
 import java.util.concurrent.TimeUnit;
 
@@ -10,7 +10,7 @@ public class RunnableDemo {
         new Thread(new RunnableOne()).start();
     }
 
-    static class RunnableOne implements Runnable{
+    static class RunnableOne implements Runnable {
 
         @Override
         public void run() {

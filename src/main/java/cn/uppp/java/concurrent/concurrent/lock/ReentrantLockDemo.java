@@ -1,4 +1,4 @@
-package cn.uppp.java.thread.concurrent.lock;
+package cn.uppp.java.concurrent.concurrent.lock;
 
 import cn.uppp.java.utils.ThreadUtils;
 
@@ -9,13 +9,13 @@ import java.util.concurrent.locks.ReentrantLock;
  * 保证加锁到解锁之间，所有操作的原子性
  */
 public class ReentrantLockDemo {
+    int num = 0;
+    ReentrantLock lock = new ReentrantLock();
+
     public static void main(String[] args) {
         ReentrantLockDemo demo = new ReentrantLockDemo();
         ThreadUtils.concurrentExecutor(new InternalThread(demo), 10);
     }
-
-    int num = 0;
-    ReentrantLock lock = new ReentrantLock();
 
     public void print() {
         try {

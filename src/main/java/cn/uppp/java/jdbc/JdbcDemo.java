@@ -9,7 +9,8 @@ public abstract class JdbcDemo {
     public static void main(String[] args) {
         testJDBCConnection();
     }
-    private static void testJDBCConnection(){
+
+    private static void testJDBCConnection() {
         Connection connection = null;
         Statement statement = null;
         ResultSet resultSet = null;
@@ -23,17 +24,17 @@ public abstract class JdbcDemo {
             // 建立连接
             connection = DriverManager.getConnection(url, username, password);
             // 创建一个语句集
-           statement = connection.createStatement();
+            statement = connection.createStatement();
             // 执行Sql语句
             final String sql = "select * from user";
             // 执行，并获取结果集
             resultSet = statement.executeQuery(sql);
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 System.out.println(resultSet.getString("username"));
             }
         } catch (Exception e) {
             e.printStackTrace();
-        } finally{
+        } finally {
             try {
                 resultSet.close();
                 statement.close();

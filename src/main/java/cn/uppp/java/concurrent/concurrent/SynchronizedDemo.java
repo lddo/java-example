@@ -1,4 +1,4 @@
-package cn.uppp.java.thread.concurrent;
+package cn.uppp.java.concurrent.concurrent;
 
 import cn.uppp.java.utils.ThreadUtils;
 
@@ -7,16 +7,17 @@ import cn.uppp.java.utils.ThreadUtils;
  * 特性：原子性、可见性
  */
 public class SynchronizedDemo {
+    int num = 0;
+
     public static void main(String[] args) {
         ThreadUtils.concurrentExecutor(new InternalThread(new SynchronizedDemo()), 10);
     }
 
-    int num = 0;
-    public synchronized void print(){
+    public synchronized void print() {
         System.out.println(++num);
     }
 
-    private static class InternalThread implements Runnable{
+    private static class InternalThread implements Runnable {
         private SynchronizedDemo demo;
 
         public InternalThread(SynchronizedDemo demo) {
